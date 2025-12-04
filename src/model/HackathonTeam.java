@@ -1,75 +1,88 @@
 package model;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class HackathonTeam {
 
-    private int teamID;
+    private int teamNumber;
     private String teamName;
-    private String category; // simple String for Stage 4
-    private String university;
-    private int[] scores; // 4–6 integer scores (0–5)
+    private Category category;
+    private ArrayList<Competitor> members;
+    private Score score;
+    private String institution;
+    private String state;
 
-    public HackathonTeam(int teamID, String teamName, String category, String university, int[] scores) {
-        this.teamID = teamID;
+    public HackathonTeam(int teamNumber, String teamName, Category category, String institution, String state) {
+        this.teamNumber = teamNumber;
         this.teamName = teamName;
         this.category = category;
-        this.university = university;
-
-        // Stage 4 requirement: int array of scores 0–5
-        this.scores = scores;
+        this.institution = institution;
+        this.state = state;
+        this.members = new ArrayList<>();
+        this.score = new Score();
     }
 
-    public int getTeamID() {
-        return teamID;
+    public void addMember(Competitor competitor) {
+        members.add(competitor);
+    }
+
+    public void updateScore(int creativity, int technicality, int presentation) {
+        score.setCreativity(creativity);
+        score.setTechnicality(technicality);
+        score.setPresentation(presentation);
+    }
+
+    public int getTotalScore() {
+        return score.getTotalScore();
+    }
+
+    // Getters and Setters
+
+    public int getTeamNumber() {
+        return teamNumber;
+    }
+
+    public void setTeamNumber(int teamNumber) {
+        this.teamNumber = teamNumber;
     }
 
     public String getTeamName() {
         return teamName;
     }
 
-    public String getCategory() {
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public Category getCategory() {
         return category;
     }
 
-    public String getUniversity() {
-        return university;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public int[] getScoreArray() {
-        return scores;
+    public ArrayList<Competitor> getMembers() {
+        return members;
     }
 
-    // Stage 4 requirement: always return 5 for now
-    public double getOverallScore() {
-        return 5;
+    public Score getScore() {
+        return score;
     }
 
-    // Stage 4: full text description
-    public String getFullDetails() {
-        return "Team ID " + teamID + ", name " + teamName + " (" + university + ").\n" +
-               teamName + " is competing in the " + category +
-               " category and received scores " + Arrays.toString(scores) +
-               ", resulting in an overall score of " + getOverallScore();
+    public String getInstitution() {
+        return institution;
     }
 
-    // Stage 4: short details "TID 101 (CT) has an overall score of X"
-    public String getShortDetails() {
-        String initials = getInitials(teamName);
-        return "TID " + teamID + " (" + initials + ") has an overall score of " + getOverallScore();
+    public void setInstitution(String institution) {
+        this.institution = institution;
     }
 
-    private String getInitials(String name) {
-        String[] parts = name.split(" ");
-        StringBuilder sb = new StringBuilder();
-        for (String p : parts) {
-            sb.append(Character.toUpperCase(p.charAt(0)));
-        }
-        return sb.toString();
+    public String getState() {
+        return state;
     }
 
-    @Override
-    public String toString() {
-        return getShortDetails();
+    public void setState(String state) {
+        this.state = state;
     }
 }
