@@ -1,5 +1,14 @@
 package model;
 
+/**
+ * The {@code Score} class represents the scoring components assigned
+ * to a hackathon team by judges.
+ *
+ * <p>It includes creativity, technicality, and presentation scores.</p>
+ *
+ * @author Wong Wai Soon
+ * @version 1.0
+ */
 public class Score {
 
     private int creativity;
@@ -7,16 +16,16 @@ public class Score {
     private int presentation;
 
     public Score() {
-        this.creativity = 0;
-        this.technicality = 0;
-        this.presentation = 0;
+        creativity = 0;
+        technicality = 0;
+        presentation = 0;
     }
 
+    // Computes total score. //
     public int getTotalScore() {
         return creativity + technicality + presentation;
     }
 
-    // Setters
     public void setCreativity(int creativity) {
         this.creativity = creativity;
     }

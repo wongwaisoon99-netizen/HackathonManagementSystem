@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"HackathonManagementSystem","l":"application"},{"m":"HackathonManagementSystem","l":"model"},{"m":"HackathonManagementSystem","l":"system"}];updateSearchResults();

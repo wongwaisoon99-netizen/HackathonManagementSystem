@@ -1,14 +1,27 @@
 package model;
 
+import java.util.List;
+
+/**
+ * Generates reports for Hackathon Teams.
+ */
 public class ReportGenerator {
 
-    public void printTeamReport(HackathonTeam team) {
-        System.out.println("---- Team Report ----");
-        System.out.println("Team Number: " + team.getTeamNumber());
-        System.out.println("Team Name: " + team.getTeamName());
-        System.out.println("Category: " + team.getCategory());
-        System.out.println("Institution: " + team.getInstitution());
-        System.out.println("State: " + team.getState());
-        System.out.println("Total Score: " + team.getTotalScore());
+    public static void printTeamReport(List<HackathonTeam> teams) {
+        if (teams == null || teams.isEmpty()) {
+            System.out.println("No team data available for reporting.");
+            return;
+        }
+
+        System.out.println("===== HACKATHON TEAM REPORT =====");
+
+        for (HackathonTeam t : teams) {
+            try {
+                System.out.println(t.toString());
+            } catch (Exception e) {
+                System.out.println("Error reading team data: " + e.getMessage());
+            }
+        }
+        System.out.println("=================================\n");
     }
 }
