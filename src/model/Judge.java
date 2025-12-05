@@ -1,22 +1,27 @@
 package model;
 
-/**
- * The {@code Judge} class represents a hackathon judge who evaluates and scores teams.
- *
- * @author Wong Wai Soon
- * @version 1.0
- */
-public class Judge {
+public class Judge extends Person {
 
-    private Name name;
+    private String expertise;
 
-    // Constructs a Judge object. //
-    public Judge(Name name) {
-        this.name = name;
+    public Judge(String name, String expertise) {
+        super(name);
+        this.expertise = expertise;
     }
 
-    // Assigns score to a team. //
-    public void scoreTeam(HackathonTeam team, int creativity, int technicality, int presentation) {
-        team.updateScore(creativity, technicality, presentation);
+    // The scoring method is simplified for now.
+    public void scoreTeam(HackathonTeam team, int score1, int score2, int score3, int score4, int score5) {
+        // We can't update the team's scores easily without a setter, so this is just a placeholder
+        // for when you integrate this logic in Stage 6.
+        System.out.println("Judge " + getFullName() + " has scored team " + team.getTeamName());
+    }
+
+    @Override
+    public String getRole() {
+        return "Judge";
+    }
+
+    public String getExpertise() {
+        return expertise;
     }
 }
